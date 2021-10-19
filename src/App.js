@@ -7,6 +7,7 @@ import './App.css';
 import Footer from './Pages/sharedPages/Footer';
 import Header from './Pages/sharedPages/Header';
 import AboutUs from "./Pages/webpages/About Us/AboutUs";
+import ContactUs from "./Pages/webpages/Contact Us/ContactUs";
 import Home from './Pages/webpages/Home/Home';
 import Service from "./Pages/webpages/Service/Service";
 import Services from "./Pages/webpages/Services/Services";
@@ -23,12 +24,17 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          <Route path="/service/:serviceId" children={<Service />}></Route>
+          <Route path="/service/:serviceId" >
+            <Service />
+          </Route>
           <Route path="/service">
             <Services></Services>
           </Route>
           <Route path="/about">
             <AboutUs></AboutUs>
+          </Route>
+          <Route path="/contact">
+            <ContactUs></ContactUs>
           </Route>
         </Switch>
         <Footer></Footer>

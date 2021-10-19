@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 
 const Service = () => {
-    let { serviceId } = useParams;
+    const { serviceId } = useParams;
 
     const [service, setService] = useState([]);
     useEffect(() => {
@@ -13,11 +13,12 @@ const Service = () => {
                 setService(data);
             })
     }, [])
-    const clickedService = service.filter(expectedService => expectedService.id === serviceId)
-    const { imageSrc, imageAlt, name, description } = clickedService;
+    /* const clickedService = service.filter(expectedService => expectedService.id === { param })
+    const { imageSrc, imageAlt, name, description } = clickedService; */
     return (
-        <div className="md:grid grid-cols-2">
+        <div className="">
             <p className="text-center text-xl">Sorry !!! useParams() hook giving me undefined</p>
+            <p className="text-center text-xl">id : {serviceId}</p>
         </div>
     );
 };
