@@ -8,28 +8,32 @@ import { faClock, faPhoneAlt, faUserNurse } from '@fortawesome/free-solid-svg-ic
 
 
 const Header = () => {
+    const navigation = [
+        { name: 'Home', href: '/home', current: false },
+        { name: 'Service', href: '/service', current: false },
+        { name: 'About Us', href: '/about', current: false },
+        { name: 'Contact Us', href: '/contact', current: false },
+    ]
     return (
         <>
             {/* Navbar top section */}
-            <div className="mx-4 p-4 flex justify-between">
+            <div className="mx-4 p-4 lg:flex justify-between">
                 {/* Header */}
                 <NavLink to="/">
-                    <h1 className="text-5xl font-bold text-pink-600">
-                        <span className="text-blue-700">Denti</span>
-                        Care
-                    </h1></NavLink>
+                    <img className="w-1/4" src="http://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2019/12/denticare-logo.png" alt="" />
+                </NavLink>
                 {/* Time and Phone */}
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='md:grid grid-cols-2 gap-4'>
                     <p>
-                        <FontAwesomeIcon className="text-2xl text-blue-500" icon={faPhoneAlt} />
+                        <FontAwesomeIcon className="md:text-2xl sm:text-xl text-blue-500" icon={faPhoneAlt} />
                         &nbsp;&nbsp;
-                        <span className="text-3xl">415-205-5550</span> <br />
+                        <span className="md:text-3xl sm:text-xl">415-205-5550</span> <br />
                         <span className="text-sm block text-center">24/7 Emergency Phone</span>
                     </p>
                     <p>
-                        <FontAwesomeIcon className="text-2xl text-blue-500" icon={faClock} />
+                        <FontAwesomeIcon className="md:text-2xl sm:text-xl text-blue-500" icon={faClock} />
                         &nbsp;&nbsp;
-                        <span className="text-3xl">Saturday - Thursday</span> <br />
+                        <span className="md:text-3xl sm:text-xl">Saturday - Thursday</span> <br />
                         <span className="text-sm block text-center">9AM - 9PM</span>
                     </p>
                 </div>
@@ -54,10 +58,15 @@ const Header = () => {
                                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                     <div className="hidden sm:block sm:ml-6">
                                         <div className="flex space-x-4">
-                                            <NavLink to='/home' className='text-gray-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>Home</NavLink>
-                                            <NavLink to='/service' className='text-gray-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>Services</NavLink>
-                                            <NavLink to='/about' className='text-gray-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>About Us</NavLink>
-                                            <NavLink to='/contact' className='text-gray-100 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>Contact Us</NavLink>
+                                            {navigation.map((item) => (
+                                                <NavLink
+                                                    key={item.name}
+                                                    to={item.href}
+                                                    className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                                                >
+                                                    {item.name}
+                                                </NavLink>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +104,15 @@ const Header = () => {
 
                         <Disclosure.Panel className="sm:hidden">
                             <div className="px-2 pt-2 pb-3 space-y-1">
-                                <NavLink to='/home' className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>Home</NavLink>
+                                {navigation.map((item) => (
+                                    <NavLink
+                                        key={item.name}
+                                        to={item.href}
+                                        className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                                    >
+                                        {item.name}
+                                    </NavLink>
+                                ))}
                             </div>
                         </Disclosure.Panel>
                     </>

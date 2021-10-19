@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <>
             {/* Footer top section */}
-            <div className="bg-gray-200 mt-11 p-10 grid grid-cols-4 gap-x-8">
+            <div className="bg-gray-200 mt-11 p-10 lg:grid grid-cols-4 gap-x-8">
                 <div>
                     <h1 className="text-3xl font-bold text-pink-600"><span className="text-blue-700">Denti</span>Care</h1>
                     <br /><br />
