@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <div className="mt-10 sm:mt-0 p-4">
+        <div className="mt-10 sm:mt-0 p-4 bg-gray-100">
             <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
                     <div className="px-4 sm:px-0">
@@ -11,7 +11,7 @@ const ContactUs = () => {
                     </div>
                 </div>
                 <div className="mt-5 md:mt-0 md:col-span-2">
-                    <form action="#" method="POST">
+                    <form>
                         <div className="shadow overflow-hidden sm:rounded-md">
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div className="grid grid-cols-6 gap-6">

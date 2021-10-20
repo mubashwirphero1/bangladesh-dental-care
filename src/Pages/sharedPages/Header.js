@@ -5,6 +5,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faPhoneAlt, faUserNurse } from '@fortawesome/free-solid-svg-icons';
+import useAuth from '../../hooks/useAuth';
 
 
 const Header = () => {
@@ -14,6 +15,7 @@ const Header = () => {
         { name: 'About Us', href: '/about', current: false },
         { name: 'Contact Us', href: '/contact', current: false },
     ]
+    const { user, logOut, userName } = useAuth()
     return (
         <>
             {/* Navbar top section */}
@@ -58,22 +60,17 @@ const Header = () => {
                                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                     <div className="hidden sm:block sm:ml-6">
                                         <div className="flex space-x-4">
-                                            {navigation.map((item) => (
-                                                <NavLink
-                                                    key={item.name}
-                                                    to={item.href}
-                                                    className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
-                                                >
-                                                    {item.name}
-                                                </NavLink>
-                                            ))}
+                                            <NavLink to='/home' className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Home</NavLink>
+                                            <NavLink to='/service' className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Service</NavLink>
+                                            <NavLink to='/about' className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>About Us</NavLink>
+                                            <NavLink to='/contact' className='text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Contact Us</NavLink>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
+                                    {userName ? <p className='text-gray-100 text-xl'>{userName}</p> : <p></p>}
                                     {/* Profile dropdown */}
-                                    <Menu as="div" className="ml-3 relative">
+                                    {user?.email ? <Menu as="div" className="ml-3 relative">
                                         <div>
                                             <Menu.Button className="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                 <span className="sr-only">Open user menu</span>
@@ -92,12 +89,14 @@ const Header = () => {
                                             <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                 <Menu.Item>
                                                     {({ active }) => (
-                                                        <button className='block px-4 py-2 text-sm text-gray-700'>Sign out</button>
+                                                        <button onClick={logOut} className='block px-4 py-2 text-sm text-gray-700'>Sign out</button>
                                                     )}
                                                 </Menu.Item>
                                             </Menu.Items>
                                         </Transition>
-                                    </Menu>
+                                    </Menu> : <div className='flex'>
+                                        <NavLink to="/login" className="text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign in</NavLink>
+                                        <NavLink to="/register" className="text-gray-100 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</NavLink></div>}
                                 </div>
                             </div>
                         </div>
