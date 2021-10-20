@@ -15,12 +15,27 @@ const useFirebase = () => {
 
     const signInUsingGoogle = () => {
         return signInWithPopup(auth, googleProvider)
-            .finally(() => { setLoading(false); setError(''); setUserName(user.name) })
-            .catch((error) => {
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const { user } = result;
+                setUser(user)
+                setError('')
+                console.log(user)
+                setUserName(user.displayName)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
                 const errorMessage = error.message;
-                setUserName('')
-                setError(errorMessage);
-            })
+                setError(errorMessage)
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
     }
 
     const registerUsingEmailAndPassword = (name, email, password) => {
@@ -40,12 +55,13 @@ const useFirebase = () => {
             });
     }
 
-    const signInUsingEmailAndPassword = (email, password) => {
+    const signInUsingEmailAndPassword = (name, email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
                 setUser(user)
+                setUserName(name)
                 setError('');
                 // ...
             })

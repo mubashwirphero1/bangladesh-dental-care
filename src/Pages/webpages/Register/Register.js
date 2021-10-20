@@ -9,7 +9,12 @@ const Register = () => {
     // Get user name
     const [name, setName] = useState('');
     const getUserName = e => {
-        setName(e.target.value)
+        if (e.target.value === '') {
+            return;
+        }
+        else {
+            setName(e.target.value)
+        }
     }
     // Get user email
     const [email, setEmail] = useState('');
@@ -80,7 +85,7 @@ const Register = () => {
                                     autoComplete="email"
                                     required
                                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    placeholder="Email address (Valid email address)"
+                                    placeholder="Email address"
                                 />
                             </div>
                             <div>

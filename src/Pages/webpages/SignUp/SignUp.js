@@ -7,6 +7,17 @@ import useAuth from '../../../hooks/useAuth';
 const SignUp = () => {
     const { signInUsingGoogle, signInUsingEmailAndPassword, error } = useAuth();
 
+    // Get user name
+    const [name, setName] = useState('');
+    const getUserName = e => {
+        if (e.target.value === '') {
+            return;
+        }
+        else {
+            setName(e.target.value)
+        }
+    }
+
     // Get user email
     const [email, setEmail] = useState('')
     const getUserEmail = e => {
@@ -21,9 +32,10 @@ const SignUp = () => {
 
     // Handle user sign in
     const handleSignIn = () => {
+        document.getElementById('user-name').value = '';
         document.getElementById('email-address').value = '';
         document.getElementById('password').value = '';
-        return signInUsingEmailAndPassword(email, password)
+        return signInUsingEmailAndPassword(name, email, password)
     }
     return (
         <div>
@@ -49,6 +61,21 @@ const SignUp = () => {
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label htmlFor="email-address" className="sr-only">
+                                    Your name
+                                </label>
+                                <input
+                                    onBlur={getUserName}
+                                    id="user-name"
+                                    name="nme"
+                                    type="name"
+                                    autoComplete="name"
+                                    required
+                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    placeholder="Your name"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email-address" className="sr-only">
                                     Email address
                                 </label>
                                 <input
@@ -58,7 +85,7 @@ const SignUp = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                     placeholder="Email address"
                                 />
                             </div>
