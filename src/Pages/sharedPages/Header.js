@@ -22,7 +22,7 @@ const Header = () => {
             <div className="mx-4 p-4 lg:flex justify-between">
                 {/* Header */}
                 <NavLink to="/">
-                    <img className="w-1/4" src="http://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2019/12/denticare-logo.png" alt="" />
+                    <h1 className="text-4xl font-bold text-green-500">Bangladesh <span className="text-red-500">Dental Care</span></h1>
                 </NavLink>
                 {/* Time and Phone */}
                 <div className='md:grid grid-cols-2 gap-4'>

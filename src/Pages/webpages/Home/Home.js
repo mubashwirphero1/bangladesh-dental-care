@@ -43,7 +43,7 @@ const Home = () => {
     return (
         <>
             {/* Banner area */}
-            <div className="banner-area py-40">
+            <div className="header-banner-area py-40">
                 <div className="p-10 h-auto">
                     <h3 className="text-4xl text-pink-600 font-semibold">Care for your smile</h3>
                     <h1 className="text-5xl text-blue-700 font-semibold">Personalize and comfortable</h1>

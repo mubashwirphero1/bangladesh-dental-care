@@ -10,7 +10,7 @@ const Footer = () => {
             {/* Footer top section */}
             <div className="bg-gray-200 mt-11 p-10 lg:grid grid-cols-4 gap-x-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-pink-600"><span className="text-blue-700">Denti</span>Care</h1>
+                    <h1 className="text-4xl font-bold text-green-500">Bangladesh <span className="text-red-500">Dental Care</span></h1>
                     <br /><br />
                     <p>A team of dentists working to ensure you receive the best treatment.</p>
                     <br /><br />
